@@ -1,0 +1,21 @@
+{
+	"name": "PCF DevContainer",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:18-buster",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"danish-naglekar.pcf-builder",
+				"microsoft-IsvExpTools.powerplatform-vscode"
+			]
+		}
+	},
+	"forwardPorts": [
+		8181
+	],
+	"features": {
+		"ghcr.io/devcontainers/features/dotnet:2": "latest",
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"postCreateCommand": ""
+}

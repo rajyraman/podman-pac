@@ -1,0 +1,33 @@
+name: "Push container"
+on:
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+permissions:
+  contents: read
+  # Push images to GHCR.
+  packages: write  
+jobs:
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.REPO_TOKEN }}      
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.REPO_TOKEN }}      
+
+      - name: Pre-build dev container image
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: "ghcr.io/rajyraman/pac-prebuilt"
+          cacheFrom: "ghcr.io/rajyraman/pac-prebuilt"
+          configFile: "./.devcontainer/devcontainer.docker.json"
+          push: always              
