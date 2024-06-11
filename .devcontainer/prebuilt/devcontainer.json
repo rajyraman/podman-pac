@@ -1,5 +1,9 @@
 {
 	"name": "PCF DevContainer",
 	"image": "rajyraman/powerplatformcli",
-	"containerUser": "node"
+	"runArgs": [
+		"--userns=keep-id"
+	],
+	"containerUser": "node",
+	"remoteUser": "node"
 }

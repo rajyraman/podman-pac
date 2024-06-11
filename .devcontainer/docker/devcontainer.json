@@ -17,5 +17,6 @@
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
-	"postCreateCommand": ""
+	"containerUser": "node",
+	"remoteUser": "node"
 }
